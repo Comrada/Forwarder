@@ -1,0 +1,30 @@
+Configuration:
+  status: WARN
+  monitorInterval: 30
+
+  appenders:
+    Console:
+      name: ConsoleAppender
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "%clr{%d{ISO8601}}{faint} %clr{%-5level} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n%throwable"
+
+    RollingFile:
+      - name: FileAppender
+        fileName: "logs/forwarder.log"
+        filePattern: "logs/forwarder-%i.log.gz"
+        PatternLayout:
+          pattern: "%d{dd.MM.yy HH:mm:ss} %level{length=1} [%t] %class{1.}.%method:%line - %msg%n"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: 2MB
+        DefaultRollOverStrategy:
+          min: 1
+          max: 20
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        - ref: ConsoleAppender
+        - ref: FileAppender
