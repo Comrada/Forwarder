@@ -5,7 +5,7 @@ import java.util.Collection;
 /**
  * Common interface for all connectors that can send messages.
  */
-public interface WritableConnector {
+public interface Sender {
 
     /**
      * Send a collection of messages via a connector
@@ -13,5 +13,5 @@ public interface WritableConnector {
      * @param messages
      *         list of messages
      */
-    void write(Collection<String> messages);
+    void send(Collection<String> messages);
 }
