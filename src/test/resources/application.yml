@@ -1,0 +1,14 @@
+reader:
+  cron: '0 * * * * ?'
+  twitter:
+    api-key: twitter-api-key
+    api-secret: twitter-api-secret
+    username: elonmusk
+    tweets-to-read: 5
+  slack:
+    token: slack-token
+    channel: updates
+    bot-icon: ':robot_face:'
+    bot-name: Twitter
+  source: TWITTER
+  target: SLACK
