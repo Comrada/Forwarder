@@ -1,0 +1,25 @@
+.gradle
+/build/
+logs/
+
+### IntelliJ IDEA ###
+../.idea
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+target
+classes/
+.editorconfig
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### Sub-projects ###
+**/build/
+**/out/
