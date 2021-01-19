@@ -1,4 +1,4 @@
-package com.github.comrada.forwarder.reader;
+package com.github.comrada.forwarder.maintenance;
 
 import com.github.comrada.forwarder.connector.Connector;
 import org.apache.logging.log4j.LogManager;
