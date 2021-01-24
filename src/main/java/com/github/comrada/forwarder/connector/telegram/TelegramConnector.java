@@ -10,12 +10,9 @@ import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 import java.util.Collection;
 
 public final class TelegramConnector implements Sender {
-    private final TelegramProperties telegramProperties;
     private final ThrottlingBot telegramBot;
 
-    public TelegramConnector(TelegramProperties telegramProperties,
-            ThrottlingBot telegramBot) throws TelegramApiException {
-        this.telegramProperties = requireNonNull(telegramProperties);
+    public TelegramConnector(ThrottlingBot telegramBot) throws TelegramApiException {
         this.telegramBot = requireNonNull(telegramBot);
         new TelegramBotsApi(DefaultBotSession.class).registerBot(this.telegramBot);
     }
@@ -23,6 +20,6 @@ public final class TelegramConnector implements Sender {
     @Override
     public void send(Collection<String> messages) {
         if (messages.isEmpty()) return;
-        messages.forEach(message -> telegramBot.send(message, telegramProperties.getChatId()));
+        messages.forEach(telegramBot::send);
     }
 }

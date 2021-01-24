@@ -18,7 +18,7 @@ public class ThrottlingBot extends TelegramLongPollingBot {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final int TELEGRAM_SENDING_RATE = 1100;
     private final TelegramProperties properties;
-    private final Queue<Distribution> distributions = new ConcurrentLinkedQueue<>();
+    private final Queue<String> messageQueue = new ConcurrentLinkedQueue<>();
 
     public ThrottlingBot(TelegramProperties properties, TaskScheduler scheduler) {
         this.properties = properties;
@@ -44,11 +44,11 @@ public class ThrottlingBot extends TelegramLongPollingBot {
     }
 
     private void handleQueue() {
-        Distribution distribution = distributions.poll();
-        if (distribution != null) {
+        String message = messageQueue.poll();
+        if (message != null) {
             SendMessage sendMessageCommand = new SendMessage();
-            sendMessageCommand.setChatId(distribution.chat);
-            sendMessageCommand.setText(distribution.message);
+            sendMessageCommand.setChatId(properties.getChatId());
+            sendMessageCommand.setText(message);
             try {
                 execute(sendMessageCommand);
             } catch (TelegramApiException e) {
@@ -57,7 +57,7 @@ public class ThrottlingBot extends TelegramLongPollingBot {
         }
     }
 
-    public void send(String message, String chat) {
-        distributions.offer(new Distribution(message, chat));
+    public void send(String message) {
+        messageQueue.offer(message);
     }
 }

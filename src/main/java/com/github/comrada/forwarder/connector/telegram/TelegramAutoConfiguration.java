@@ -16,9 +16,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class TelegramAutoConfiguration {
 
     @Bean(destroyMethod = "close")
-    Sender telegramConnector(TelegramProperties telegramProperties,
-            ThrottlingBot throttlingBot) throws TelegramApiException {
-        return new TelegramConnector(telegramProperties, throttlingBot);
+    Sender telegramConnector(ThrottlingBot throttlingBot) throws TelegramApiException {
+        return new TelegramConnector(throttlingBot);
     }
 
     @Bean
