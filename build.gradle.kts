@@ -23,6 +23,7 @@ configurations {
 
 val guavaVer = "30.1-jre"
 val slackVer = "1.5.+"
+val telegramVer = "5.+"
 
 dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -33,6 +34,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml")
     implementation("com.google.guava", "guava", guavaVer)
     implementation("com.slack.api", "slack-api-client", slackVer)
+    implementation("org.telegram", "telegrambots", telegramVer)
 
     testImplementation("org.springframework.boot", "spring-boot-starter-test")
 }

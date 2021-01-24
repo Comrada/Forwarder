@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "reader")
 public class ReaderProperties {
     private String cron;
-    private Telegram telegram;
     private ConnectorType source;
     private ConnectorType target;
 
@@ -15,14 +14,6 @@ public class ReaderProperties {
 
     public void setCron(String cron) {
         this.cron = cron;
-    }
-
-    public Telegram getTelegram() {
-        return telegram;
-    }
-
-    public void setTelegram(Telegram telegram) {
-        this.telegram = telegram;
     }
 
     public ConnectorType getSource() {
@@ -39,36 +30,6 @@ public class ReaderProperties {
 
     public void setTarget(ConnectorType target) {
         this.target = target;
-    }
-
-    public static final class Telegram {
-        private String token;
-        private String chatId;
-        private String botName;
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-        public String getChatId() {
-            return chatId;
-        }
-
-        public void setChatId(String chatId) {
-            this.chatId = chatId;
-        }
-
-        public String getBotName() {
-            return botName;
-        }
-
-        public void setBotName(String botName) {
-            this.botName = botName;
-        }
     }
 
     enum ConnectorType {
