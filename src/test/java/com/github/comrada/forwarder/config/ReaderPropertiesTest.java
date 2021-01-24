@@ -2,28 +2,31 @@ package com.github.comrada.forwarder.config;
 
 import static com.github.comrada.forwarder.config.ReaderProperties.ConnectorType.SLACK;
 import static com.github.comrada.forwarder.config.ReaderProperties.ConnectorType.TWITTER;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
+@TestPropertySource(properties = {"spring.config.location=classpath:application-test.yml"})
 class ReaderPropertiesTest {
     @Autowired
-    ReaderProperties properties;
+    ReaderProperties readerProperties;
+    @Autowired
+    TwitterProperties twitterProperties;
 
     @Test
     void testIfOk() {
-        assertEquals("0 * * * * ?", properties.getCron());
-        assertEquals(TWITTER, properties.getSource());
-        assertEquals(SLACK, properties.getTarget());
-        ReaderProperties.Twitter twitter = properties.getTwitter();
-        assertEquals("twitter-api-key", twitter.getApiKey());
-        assertEquals("twitter-api-secret", twitter.getApiSecret());
-        assertEquals("elonmusk", twitter.getUsername());
-        assertEquals(5, twitter.getTweetsToRead());
-        ReaderProperties.Slack slack = properties.getSlack();
+        assertEquals("0 * * * * ?", readerProperties.getCron());
+        assertEquals(TWITTER, readerProperties.getSource());
+        assertEquals(SLACK, readerProperties.getTarget());
+        assertEquals("twitter-api-key", twitterProperties.getApiKey());
+        assertEquals("twitter-api-secret", twitterProperties.getApiSecret());
+        assertEquals("elonmusk", twitterProperties.getUsername());
+        assertEquals(5, twitterProperties.getTweetsToRead());
+        ReaderProperties.Slack slack = readerProperties.getSlack();
         assertEquals("slack-token", slack.getToken());
         assertEquals("updates", slack.getChannel());
         assertEquals(":robot_face:", slack.getBotIcon());

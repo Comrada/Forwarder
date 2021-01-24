@@ -8,17 +8,19 @@ import com.github.comrada.forwarder.connector.twitter.TwitterConnector;
 
 public final class ConnectorsFactory {
     private final ReaderProperties readerProperties;
+    private final TwitterProperties twitterProperties;
     private Connector connector;
     private Sender sender;
 
-    public ConnectorsFactory(ReaderProperties readerProperties) {
+    public ConnectorsFactory(ReaderProperties readerProperties, TwitterProperties twitterProperties) {
         this.readerProperties = readerProperties;
+        this.twitterProperties = twitterProperties;
     }
 
     public Connector getConnector() {
         if (connector == null) {
             connector = switch (readerProperties.getSource()) {
-                case TWITTER -> new TwitterConnector(readerProperties.getTwitter());
+                case TWITTER -> new TwitterConnector(twitterProperties);
                 default -> throw new IllegalStateException("Unsupported connector type: " + readerProperties.getTarget());
             };
         }
