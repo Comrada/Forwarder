@@ -3,7 +3,7 @@ package com.github.comrada.forwarder.config;
 import com.github.comrada.forwarder.cache.HashCache;
 import com.github.comrada.forwarder.cache.PublishingCache;
 import com.github.comrada.forwarder.connector.Connector;
-import com.github.comrada.forwarder.connector.twitter.TwitterProperties;
+import com.github.comrada.forwarder.connector.Sender;
 import com.github.comrada.forwarder.maintenance.Maintenance;
 import com.github.comrada.forwarder.maintenance.Publisher;
 import com.github.comrada.forwarder.maintenance.Reader;
@@ -21,18 +21,14 @@ import java.time.Duration;
 public class ForwarderConfig {
 
     @Bean
-    ConnectorsFactory connectorsFactory(ReaderProperties readerProperties, TwitterProperties twitterProperties) {
-        return new ConnectorsFactory(readerProperties, twitterProperties);
-    }
-
-    @Bean
     Reader reader(Connector connector) {
         return new Reader(connector);
     }
 
     @Bean
-    Publisher publisher(ConnectorsFactory connectorsFactory, PublishingCache<String> cache) {
-        return new Publisher(connectorsFactory.getSender(), cache);
+    Publisher publisher(PublishingCache<String> cache) {
+        Sender consoleWriter = messages -> messages.forEach(System.out::println);
+        return new Publisher(consoleWriter, cache);
     }
 
     @Bean

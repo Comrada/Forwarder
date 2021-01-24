@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          twitter:
+            token-uri: https://api.twitter.com/oauth2/token
+        registration:
+          twitter:
+            client-name: Twitter API
+            client-id: ${reader.twitter.api-key}
+            client-secret: ${reader.twitter.api-secret}
+            authorization-grant-type: client_credentials

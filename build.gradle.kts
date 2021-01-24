@@ -27,6 +27,8 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework.boot", "spring-boot-starter")
     implementation("org.springframework.boot", "spring-boot-starter-log4j2")
+    implementation("org.springframework.boot", "spring-boot-starter-webflux")
+    implementation("org.springframework.boot", "spring-boot-starter-oauth2-client")
     implementation("com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml")
     implementation("com.google.guava", "guava", guavaVer)
 
