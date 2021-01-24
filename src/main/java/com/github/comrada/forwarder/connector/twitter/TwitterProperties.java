@@ -1,4 +1,4 @@
-package com.github.comrada.forwarder.config;
+package com.github.comrada.forwarder.connector.twitter;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

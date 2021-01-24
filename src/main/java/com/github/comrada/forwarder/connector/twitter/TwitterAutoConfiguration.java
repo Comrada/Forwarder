@@ -1,6 +1,5 @@
-package com.github.comrada.forwarder.config;
+package com.github.comrada.forwarder.connector.twitter;
 
-import com.github.comrada.forwarder.connector.twitter.TwitterConnector;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

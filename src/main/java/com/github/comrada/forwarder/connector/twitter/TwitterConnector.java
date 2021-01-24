@@ -1,6 +1,5 @@
 package com.github.comrada.forwarder.connector.twitter;
 
-import com.github.comrada.forwarder.config.TwitterProperties;
 import com.github.comrada.forwarder.connector.Connector;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

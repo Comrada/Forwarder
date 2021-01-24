@@ -5,6 +5,7 @@ import com.github.comrada.forwarder.connector.Sender;
 import com.github.comrada.forwarder.connector.slack.SlackConnector;
 import com.github.comrada.forwarder.connector.telegram.TelegramConnector;
 import com.github.comrada.forwarder.connector.twitter.TwitterConnector;
+import com.github.comrada.forwarder.connector.twitter.TwitterProperties;
 
 public final class ConnectorsFactory {
     private final ReaderProperties readerProperties;

@@ -4,6 +4,7 @@ import static com.github.comrada.forwarder.config.ReaderProperties.ConnectorType
 import static com.github.comrada.forwarder.config.ReaderProperties.ConnectorType.TWITTER;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.github.comrada.forwarder.connector.twitter.TwitterProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

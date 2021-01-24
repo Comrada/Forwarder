@@ -3,6 +3,7 @@ package com.github.comrada.forwarder.config;
 import com.github.comrada.forwarder.cache.HashCache;
 import com.github.comrada.forwarder.cache.PublishingCache;
 import com.github.comrada.forwarder.connector.Connector;
+import com.github.comrada.forwarder.connector.twitter.TwitterProperties;
 import com.github.comrada.forwarder.maintenance.Maintenance;
 import com.github.comrada.forwarder.maintenance.Publisher;
 import com.github.comrada.forwarder.maintenance.Reader;
