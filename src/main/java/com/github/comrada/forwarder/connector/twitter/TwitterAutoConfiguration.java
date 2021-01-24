@@ -1,5 +1,6 @@
 package com.github.comrada.forwarder.connector.twitter;
 
+import com.github.comrada.forwarder.connector.Connector;
 import com.github.comrada.forwarder.connector.twitter.api.ApiClient;
 import com.github.comrada.forwarder.connector.twitter.api.v2.ApiClientImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -41,8 +42,8 @@ public class TwitterAutoConfiguration {
                 .build();
     }
 
-    @Bean
-    TwitterConnector twitterConnector(TwitterProperties twitterProperties, ApiClient apiClient) {
+    @Bean(destroyMethod = "close")
+    Connector twitterConnector(TwitterProperties twitterProperties, ApiClient apiClient) {
         return new TwitterConnector(twitterProperties, apiClient);
     }
 

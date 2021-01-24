@@ -26,9 +26,8 @@ public class ForwarderConfig {
     }
 
     @Bean
-    Publisher publisher(PublishingCache<String> cache) {
-        Sender consoleWriter = messages -> messages.forEach(System.out::println);
-        return new Publisher(consoleWriter, cache);
+    Publisher publisher(Sender sender, PublishingCache<String> cache) {
+        return new Publisher(sender, cache);
     }
 
     @Bean

@@ -5,7 +5,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "reader")
 public class ReaderProperties {
     private String cron;
-    private Slack slack;
     private Telegram telegram;
     private ConnectorType source;
     private ConnectorType target;
@@ -16,14 +15,6 @@ public class ReaderProperties {
 
     public void setCron(String cron) {
         this.cron = cron;
-    }
-
-    public Slack getSlack() {
-        return slack;
-    }
-
-    public void setSlack(Slack slack) {
-        this.slack = slack;
     }
 
     public Telegram getTelegram() {
@@ -48,45 +39,6 @@ public class ReaderProperties {
 
     public void setTarget(ConnectorType target) {
         this.target = target;
-    }
-
-    public static final class Slack {
-        private String token;
-        private String channel;
-        private String botIcon;
-        private String botName;
-
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
-        public String getChannel() {
-            return channel;
-        }
-
-        public void setChannel(String channel) {
-            this.channel = channel;
-        }
-
-        public String getBotIcon() {
-            return botIcon;
-        }
-
-        public void setBotIcon(String botIcon) {
-            this.botIcon = botIcon;
-        }
-
-        public String getBotName() {
-            return botName;
-        }
-
-        public void setBotName(String botName) {
-            this.botName = botName;
-        }
     }
 
     public static final class Telegram {

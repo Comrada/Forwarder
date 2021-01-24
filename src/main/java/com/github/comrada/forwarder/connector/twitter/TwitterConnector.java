@@ -1,5 +1,7 @@
 package com.github.comrada.forwarder.connector.twitter;
 
+import static java.util.Objects.requireNonNull;
+
 import com.github.comrada.forwarder.connector.Connector;
 import com.github.comrada.forwarder.connector.twitter.api.ApiClient;
 import com.github.comrada.forwarder.connector.twitter.model.Tweet;
@@ -18,8 +20,8 @@ public final class TwitterConnector implements Connector {
     private User user;
 
     public TwitterConnector(TwitterProperties twitterProperties, ApiClient apiClient) {
-        this.twitterProperties = twitterProperties;
-        this.apiClient = apiClient;
+        this.twitterProperties = requireNonNull(twitterProperties);
+        this.apiClient = requireNonNull(apiClient);
     }
 
     @Override
